@@ -6,6 +6,8 @@ import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import { theme } from './src/theme'
 import { Loading } from './src/pages/loading'
+import { Start } from './src/pages/start'
+import { Game } from './src/pages/game'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -24,7 +26,7 @@ export default function App() {
 
   return (
     <Background onLayout={onLayoutRootView}>
-      <Loading />
+      <Game />
       <StatusBar style="auto" />
     </Background>
   )
