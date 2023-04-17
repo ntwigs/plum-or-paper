@@ -4,12 +4,37 @@ import { View, StyleSheet } from 'react-native'
 import { Button } from '../../components/button'
 import { Text } from '../../components/text'
 import { Modal } from '../../components/modal'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { questions } from '../../questions'
 import LottieView from 'lottie-react-native'
+import { useSpringRef } from '@react-spring/native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
+const useHighscore = () => {
+  const [highscore, setHighscore] = useState<number>(0)
+
+  const setScoreInStorage = async (score: number) => {
+    const prev = await AsyncStorage.getItem('@score')
+    if (score > +prev) {
+      AsyncStorage.setItem('@score', `${score}`)
+    }
+  }
+
+  const getScoreFromStorage = async () => {
+    const score = await AsyncStorage.getItem('@score')
+    setHighscore(+score)
+  }
+
+  return {
+    highscore,
+    setScoreInStorage,
+    getScoreFromStorage,
+  }
+}
 
 export const Game = () => {
   const animation = useRef(null)
+  const ref = useSpringRef<{ x: number }>()
   const [points, setPoints] = useState(0)
 
   const question = questions[Math.floor(Math.random() * questions.length)]
@@ -18,28 +43,52 @@ export const Game = () => {
 
   const [isVisible, setVisible] = useState(false)
 
-  const selectPlum = () => {
-    if (answer === 'plum') {
+  const { highscore, getScoreFromStorage, setScoreInStorage } = useHighscore()
+
+  useEffect(() => {
+    ref.current[0].start()
+  }, [])
+
+  const selectAnswer = (choice: typeof answer) => () => {
+    if (answer === choice) {
+      ref.current[0].start({ reset: true })
       animation.current.play()
       setPoints((points) => points + 1)
     } else {
+      setScoreInStorage(points)
       setVisible(true)
+      ref.current[0].start({
+        config: {
+          duration: undefined,
+        },
+      })
     }
   }
 
-  const selectPaper = () => {
-    if (answer === 'paper') {
-      animation.current.play()
-      setPoints((points) => points + 1)
-    } else {
-      setVisible(true)
-    }
-  }
+  const selectPlum = selectAnswer('plum')
+  const selectPaper = selectAnswer('paper')
 
   const restart = () => {
+    setScoreInStorage(points)
     setPoints(0)
     setVisible(false)
+    ref.current[0].start({
+      reset: true,
+      config: {
+        duration: 2000,
+      },
+    })
   }
+
+  const onTimeout = () => {
+    setVisible(true)
+  }
+
+  useEffect(() => {
+    if (isVisible) {
+      getScoreFromStorage()
+    }
+  }, [isVisible])
 
   return (
     <>
@@ -56,7 +105,7 @@ export const Game = () => {
               <Text color="darker">PAPER</Text>
             </Button>
           </View>
-          <Progress />
+          <Progress ref={ref} onTimeout={onTimeout} />
         </View>
       </Background>
       <View pointerEvents="none" style={styles.animationContainer}>
@@ -100,7 +149,7 @@ export const Game = () => {
                 textAlign: 'right',
               }}
             >
-              0
+              {highscore}
             </Text>
           </View>
         </View>
@@ -120,6 +169,7 @@ const styles = StyleSheet.create({
   },
   animation: {
     width: '100%',
+    transform: [{ scale: 1.5 }],
   },
   animationContainer: {
     flex: 1,
