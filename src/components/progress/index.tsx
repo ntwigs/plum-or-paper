@@ -1,25 +1,24 @@
 import { View, StyleSheet, Dimensions } from 'react-native'
 import { theme } from '../../theme'
-import { useEffect } from 'react'
+import { forwardRef, useEffect } from 'react'
 import { useSpring, animated } from '@react-spring/native'
 
 const width = Dimensions.get('window').width
 
-export const Progress = () => {
+type Props = {
+  onTimeout: () => void
+}
+export const Progress = forwardRef(({ onTimeout }: Props, ref) => {
   const unit = width / 100
-  const [progress, setProgress] = useSpring(() => ({
+  const [progress] = useSpring(() => ({
+    ref,
     from: { x: -100 * unit },
     to: { x: 0 },
+    onRest: onTimeout,
+    config: {
+      duration: 2000,
+    },
   }))
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setProgress.start()
-    }, 100)
-    return () => {
-      clearTimeout(timeout)
-    }
-  }, [])
 
   return (
     <View style={styles.container}>
@@ -37,7 +36,7 @@ export const Progress = () => {
       />
     </View>
   )
-}
+})
 
 const styles = StyleSheet.create({
   container: {
