@@ -4,46 +4,30 @@ import { View, StyleSheet } from 'react-native'
 import { Button } from '../../components/button'
 import { Text } from '../../components/text'
 import { Modal } from '../../components/modal'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useMemo } from 'react'
 import { questions } from '../../questions'
 import LottieView from 'lottie-react-native'
 import { useSpringRef } from '@react-spring/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-
-const useHighscore = () => {
-  const [highscore, setHighscore] = useState<number>(0)
-
-  const setScoreInStorage = async (score: number) => {
-    const prev = await AsyncStorage.getItem('@score')
-    if (score > +prev) {
-      AsyncStorage.setItem('@score', `${score}`)
-    }
-  }
-
-  const getScoreFromStorage = async () => {
-    const score = await AsyncStorage.getItem('@score')
-    setHighscore(+score)
-  }
-
-  return {
-    highscore,
-    setScoreInStorage,
-    getScoreFromStorage,
-  }
-}
 
 export const Game = () => {
   const animation = useRef(null)
   const ref = useSpringRef<{ x: number }>()
   const [points, setPoints] = useState(0)
 
-  const question = questions[Math.floor(Math.random() * questions.length)]
-  const answer = Math.floor(Math.random() * 2) > 0 ? 'plum' : 'paper'
-  const word = question[answer]
+  const question = useMemo(
+    () => questions[Math.floor(Math.random() * questions.length)],
+    [points]
+  )
+  const answer = useMemo(
+    () => (Math.floor(Math.random() * 2) > 0 ? 'plum' : 'paper'),
+    [question]
+  )
+  const word = question[answer].spelling
+  const language = question.language
+  const phonetic = question[answer].phonetic
 
   const [isVisible, setVisible] = useState(false)
-
-  const { highscore, getScoreFromStorage, setScoreInStorage } = useHighscore()
 
   useEffect(() => {
     ref.current[0].start()
@@ -55,7 +39,6 @@ export const Game = () => {
       animation.current.play()
       setPoints((points) => points + 1)
     } else {
-      setScoreInStorage(points)
       setVisible(true)
       ref.current[0].start({
         config: {
@@ -69,13 +52,12 @@ export const Game = () => {
   const selectPaper = selectAnswer('paper')
 
   const restart = () => {
-    setScoreInStorage(points)
     setPoints(0)
     setVisible(false)
     ref.current[0].start({
       reset: true,
       config: {
-        duration: 2000,
+        duration: 6000,
       },
     })
   }
@@ -84,18 +66,16 @@ export const Game = () => {
     setVisible(true)
   }
 
-  useEffect(() => {
-    if (isVisible) {
-      getScoreFromStorage()
-    }
-  }, [isVisible])
-
   return (
     <>
       <Background>
         <View style={styles.container}>
           <Text color="darker">{points}</Text>
-          <Text color="dark">{word}</Text>
+          <View>
+          <Text color="dark">{language}</Text>
+          <Text color="darker" size="large">{word}</Text>
+          <Text color="dark">{phonetic}</Text>
+          </View>
           <View>
             <Button onPress={selectPlum}>
               <Text color="darker">PLUM</Text>
@@ -169,48 +149,41 @@ const HighscoreModal = ({
   restart,
 }: HighscoreModalProps) => {
   return (
-      <Modal isVisible={isVisible}>
-        <Text color="dark" style={styles.gameover}>
-          GAME OVER
-        </Text>
+    <Modal isVisible={isVisible}>
+      <Text color="dark" style={styles.gameover}>
+        GAME OVER
+      </Text>
       <Text color="darker">{language}</Text>
-        <View style={styles.modalBottom}>
-          <Text color="dark">{word} MEANS</Text>
-          <Text color="darker">{answer}</Text>
+      <View style={styles.modalBottom}>
+        <Text color="dark">{word} MEANS</Text>
+        <Text color="darker">{answer}</Text>
+      </View>
+      <View
+        style={{
+          justifyContent: 'space-between',
+          flexDirection: 'row',
+          paddingBottom: 40,
+        }}
+      >
+        <View>
+          <Text color="darker">Score</Text>
+          <Text
+            style={{
+              textAlign: 'left',
+            }}
+          >
+            {points}
+          </Text>
         </View>
-        <View
-          style={{
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-            paddingBottom: 40,
-          }}
-        >
-          <View>
-            <Text color="darker">Score</Text>
-            <Text
-              style={{
-                textAlign: 'left',
-              }}
-            >
-              {points}
-            </Text>
-          </View>
-          <View>
-            <Text color="darker">Best</Text>
-            <Text
-              style={{
-                textAlign: 'right',
-              }}
-            >
-              {highscore}
-            </Text>
-          </View>
+        <View>
+          <Text color="darker">Best</Text>
+          <Highscore prev={points} />
         </View>
-        <Button style={styles.modalButton} onPress={restart}>
-          <Text color="darker">RESTART</Text>
-        </Button>
-      </Modal>
-    </>
+      </View>
+      <Button style={styles.modalButton} onPress={restart}>
+        <Text color="darker">RESTART</Text>
+      </Button>
+    </Modal>
   )
 }
 
