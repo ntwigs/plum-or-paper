@@ -116,11 +116,64 @@ export const Game = () => {
           source={require('../../assets/animations/confetti.json')}
         />
       </View>
+      <HighscoreModal
+        isVisible={isVisible}
+        answer={answer}
+        language={question.language}
+        points={points}
+        restart={restart}
+        word={word}
+      />
+    </>
+  )
+}
+
+type HighscoreModalProps = {
+  isVisible: boolean
+  word: string
+  answer: string
+  language: string
+  points: number
+  restart: () => void
+}
+
+type Props = {
+  prev: number
+}
+const Highscore = ({ prev }: Props) => {
+  const [highscore, setHighscore] = useState(0)
+
+  useEffect(() => {
+    const getHighscore = async () => {
+      const score = await AsyncStorage.getItem('@score')
+      if (prev > +score) {
+        setHighscore(prev)
+        await AsyncStorage.setItem('@score', `${prev}`)
+      } else {
+        setHighscore(+score)
+      }
+    }
+
+    getHighscore()
+  }, [])
+
+  return <Text style={{ textAlign: 'right' }}>{highscore}</Text>
+}
+
+const HighscoreModal = ({
+  isVisible,
+  word,
+  answer,
+  language,
+  points,
+  restart,
+}: HighscoreModalProps) => {
+  return (
       <Modal isVisible={isVisible}>
         <Text color="dark" style={styles.gameover}>
           GAME OVER
         </Text>
-        <Text color="darker">{question.language}</Text>
+      <Text color="darker">{language}</Text>
         <View style={styles.modalBottom}>
           <Text color="dark">{word} MEANS</Text>
           <Text color="darker">{answer}</Text>
