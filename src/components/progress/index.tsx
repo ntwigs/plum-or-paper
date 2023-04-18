@@ -16,7 +16,7 @@ export const Progress = forwardRef(({ onTimeout }: Props, ref) => {
     to: { x: 0 },
     onRest: onTimeout,
     config: {
-      duration: 2000,
+      duration: 6000,
     },
   }))
 
