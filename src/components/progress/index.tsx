@@ -5,20 +5,26 @@ import { useSpring, animated } from '@react-spring/native'
 
 const width = Dimensions.get('window').width
 
+export const TIMER_DURATION = 6000
+
 type Props = {
   onTimeout: () => void
 }
 export const Progress = forwardRef(({ onTimeout }: Props, ref) => {
   const unit = width / 100
-  const [progress] = useSpring(() => ({
+  const [progress, api] = useSpring(() => ({
     ref,
     from: { x: -100 * unit },
     to: { x: 0 },
     onRest: onTimeout,
     config: {
-      duration: 6000,
+      duration: TIMER_DURATION,
     },
   }))
+
+  useEffect(() => {
+    api.start()
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -40,11 +46,10 @@ export const Progress = forwardRef(({ onTimeout }: Props, ref) => {
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
-    bottom: 0,
+    bottom: 24,
     backgroundColor: theme.color.darker,
-    width: '100%',
-    height: 20,
+    width,
+    height: 24,
     borderTopWidth: 3,
     borderTopColor: theme.color.darker,
   },
