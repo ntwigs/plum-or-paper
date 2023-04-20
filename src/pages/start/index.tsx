@@ -1,26 +1,34 @@
-import { View, StyleSheet, Image } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { Background } from '../../components/background'
-import { Button } from '../../components/button'
 import { Text } from '../../components/text'
-
-const PlayButton = () => {
-  return (
-    <Button>
-      <View style={styles.play}>
-        <Image source={require('../../assets/icons/play.png')} />
-      </View>
-    </Button>
-  )
-}
+import { PlayButton } from '../../components/play-button'
+import { Confetti } from '../../components/confetti'
+import AnimatedLottieView from 'lottie-react-native'
+import { useRef } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import { NavigationProps } from '../../components/navigation'
 
 export const Start = () => {
+  const navigation = useNavigation<NavigationProps>()
+  const confettiRef = useRef<AnimatedLottieView>(null)
+
+  const onPress = () => {
+    confettiRef.current.play()
+    navigation.navigate('Game')
+  }
+
   return (
-    <Background>
-      <View style={styles.container}>
-        <Text color="darker">Plum or Paper</Text>
-        <PlayButton />
-      </View>
-    </Background>
+    <>
+      <Background>
+        <View style={styles.container}>
+          <Text color="darker" size="large">
+            Plum or Paper
+          </Text>
+          <PlayButton onPressIn={onPress} />
+        </View>
+      </Background>
+      <Confetti ref={confettiRef} />
+    </>
   )
 }
 
@@ -30,10 +38,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
   },
-  play: {
-    width: 88,
-    height: 56,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
 })
