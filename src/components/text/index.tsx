@@ -4,25 +4,30 @@ import { theme } from '../../theme'
 type Props = TextProps & {
   color?: keyof typeof theme.color
   isUppercase?: boolean
-  size?: 'large' | 'medium'
+  size?: 'large' | 'medium' | 'larger'
+  align?: 'left' | 'right' | 'center'
 }
 export const Text = ({
   children,
   color = 'dark',
   isUppercase = false,
   style,
-  size,
+  size = 'medium',
+  align = 'center',
   ...props
 }: Props) => {
   return (
     <BaseText
+      numberOfLines={1}
+      adjustsFontSizeToFit
       {...props}
       style={[
         styles.text,
         styles.uppercase,
-        size === 'large' ? styles.large : styles.medium,
+        styles[size],
         {
           color: theme.color[color],
+          textAlign: align,
         },
         style,
       ]}
@@ -34,15 +39,16 @@ export const Text = ({
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 32,
     fontFamily: 'Nunito-Black',
-    textAlign: 'center',
   },
   medium: {
-    fontSize: 32
+    fontSize: 32,
   },
   large: {
     fontSize: 48,
+  },
+  larger: {
+    fontSize: 64,
   },
   uppercase: {
     textTransform: 'uppercase',
