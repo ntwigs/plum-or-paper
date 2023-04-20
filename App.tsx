@@ -1,13 +1,12 @@
 import { StatusBar } from 'expo-status-bar'
-import { Text, StyleSheet } from 'react-native'
-import { Background } from './src/components/background'
+import { StyleSheet, View } from 'react-native'
 import { useCallback } from 'react'
 import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import { theme } from './src/theme'
-import { Loading } from './src/pages/loading'
-import { Start } from './src/pages/start'
-import { Game } from './src/pages/game'
+import { Navigation } from './src/components/navigation'
+
+
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -25,17 +24,16 @@ export default function App() {
   }
 
   return (
-    <Background onLayout={onLayoutRootView}>
-      <Game />
+    <View style={styles.container}>
+      <Navigation />
       <StatusBar style="auto" />
-    </Background>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
-  text: {
-    fontSize: 24,
-    fontFamily: 'Nunito-Black',
-    color: theme.color.darker
-  }
+  container: {
+    flex: 1,
+    backgroundColor: theme.color.light
+  } 
 })
