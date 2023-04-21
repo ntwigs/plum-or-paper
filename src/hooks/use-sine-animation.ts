@@ -7,6 +7,7 @@ export const useSineAnimation = () => {
     loop: {
       reverse: true,
     },
+    reset: true,
     config: {
       duration: 500,
       easine: easings.easeInOutSine,
