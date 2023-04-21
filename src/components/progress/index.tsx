@@ -12,7 +12,7 @@ type Props = {
 }
 export const Progress = forwardRef(({ onTimeout }: Props, ref) => {
   const unit = width / 100
-  const [progress, api] = useSpring(() => ({
+  const [progress] = useSpring(() => ({
     ref,
     from: { x: -100 * unit },
     to: { x: 0 },
@@ -21,10 +21,6 @@ export const Progress = forwardRef(({ onTimeout }: Props, ref) => {
       duration: TIMER_DURATION,
     },
   }))
-
-  useEffect(() => {
-    api.start()
-  }, [])
 
   return (
     <View style={styles.container}>
@@ -46,7 +42,6 @@ export const Progress = forwardRef(({ onTimeout }: Props, ref) => {
 
 const styles = StyleSheet.create({
   container: {
-    bottom: 24,
     backgroundColor: theme.color.darker,
     width,
     height: 24,
