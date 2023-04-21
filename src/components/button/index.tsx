@@ -10,12 +10,14 @@ import {
 import type { ReactNode } from 'react'
 import { theme } from '../../theme'
 import { useSpring, animated, to } from '@react-spring/native'
+import { useSound } from '../../hooks/use-sound'
 
 type Props = Omit<PressableProps, 'children'> & {
   style?: StyleProp<ViewStyle>
   children: ReactNode
 }
 export const Button = ({ children, style = {}, ...props }: Props) => {
+  const sound = useSound()
   const [spring, api] = useSpring(() => ({
     from: { y: 0 },
   }))
@@ -25,6 +27,7 @@ export const Button = ({ children, style = {}, ...props }: Props) => {
       {...props}
       style={style}
       onPressIn={(e) => {
+        sound.button.replayAsync()
         api.start({ from: { y: 0 }, to: { y: 8 } })
 
         if (props.onPressIn) {
