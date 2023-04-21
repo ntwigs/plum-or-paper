@@ -14,17 +14,29 @@ import { Confetti } from '../../components/confetti'
 import { GameOverModal } from '../../components/game-over-modal'
 import { Word } from '../../components/word'
 import { Score } from '../../components/score'
+import { StartModal } from '../../components/start-modal'
+import { useSound } from '../../hooks/use-sound'
 
 export const Game = () => {
+  const sound = useSound()
   const confettiRef = useRef<AnimatedLottieView>(null)
   const ref = useSpringRef<{ x: number }>()
+  const { isVisible: isStartModalVisible, closeModal: closeStartModal } =
+    useModal({ initialState: true })
   const { answer, nextQuestion, question } = useQuestion()
   const { increaseScore, resetScore, score } = useScore()
   const { isVisible, closeModal, openModal } = useModal()
 
+  const startGame = () => {
+    closeStartModal()
+    ref.current[0].start()
+    confettiRef.current.play()
+  }
+
   const selectAnswer = (choice: typeof answer) => () => {
     if (answer === choice) {
       ref.current[0].start({ reset: true })
+      sound.score.replayAsync()
 
       confettiRef.current.play()
 
@@ -88,6 +100,7 @@ export const Game = () => {
         restart={restart}
         word={question[answer].spelling}
       />
+      <StartModal isVisible={isStartModalVisible} onPress={startGame} />
     </>
   )
 }
