@@ -5,8 +5,7 @@ import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import { theme } from './src/theme'
 import { Navigation } from './src/components/navigation'
-
-
+import { SoundProvider } from './src/hooks/use-sound'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -24,16 +23,18 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Navigation />
-      <StatusBar style="auto" />
-    </View>
+    <SoundProvider>
+      <View style={styles.container}>
+        <Navigation />
+        <StatusBar style="auto" />
+      </View>
+    </SoundProvider>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.color.light
-  } 
+    backgroundColor: theme.color.light,
+  },
 })
