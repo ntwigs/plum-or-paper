@@ -3,7 +3,6 @@ import { Modal } from '../modal'
 import { Text } from '../text'
 import { Button } from '../button'
 import { Highscore } from '../highscore'
-import { useSpring } from '@react-spring/native'
 
 type Props = {
   isVisible: boolean
