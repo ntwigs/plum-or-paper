@@ -35,7 +35,7 @@ export const GameOverModal = ({
         </View>
         <View>
           <Text color="darker">Best</Text>
-          <Highscore score={score} />
+          <Highscore score={score} align='right' />
         </View>
       </View>
       <Button style={styles.restartButton} onPress={restart}>
