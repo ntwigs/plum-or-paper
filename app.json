@@ -1,36 +1,38 @@
 {
   "expo": {
-    "name": "Plum or Paper: Ultimate Quiz",
-    "slug": "plum-or-paper-the-ultimate-quiz",
+    "name": "POP!",
+    "slug": "plum-or-paper-ultimate-quiz",
     "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FF9B54"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
-      "blockedPermissions": ["android.permission.RECORD_AUDIO"],
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#FF9B54"
       },
-      "package": "com.ntwigs.plumorpapertheultimatequiz"
+      "package": "com.ntwigs.plumorpaperultimatequiz"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "owner": "ntwigs",
     "extra": {
       "eas": {
-        "projectId": "c242f727-a526-445a-88d0-f4bf88aef14d"
+        "projectId": "b76b857d-78e0-49bd-944b-2149646a1f4d"
       }
-    },
-    "owner": "ntwigs"
+    }
   }
 }
