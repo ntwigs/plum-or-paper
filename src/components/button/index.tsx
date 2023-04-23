@@ -7,7 +7,7 @@ import {
   View,
   Text,
 } from 'react-native'
-import type { ReactNode } from 'react'
+import { ReactNode, useCallback } from 'react'
 import { theme } from '../../theme'
 import { useSpring, animated, to } from '@react-spring/native'
 import { useSound } from '../../hooks/use-sound'
@@ -22,19 +22,25 @@ export const Button = ({ children, style = {}, ...props }: Props) => {
     from: { y: 0 },
   }))
 
+  const onPressIn = useCallback((e) => {
+    sound.button.replayAsync()
+    api.start({ from: { y: 0 }, to: { y: 8 } })
+
+    if (props.onPressIn) {
+      props.onPressIn(e)
+    }
+  }, [])
+
+  const onPressOut = useCallback(() => {
+    api.start({ y: 0 })
+  }, [])
+
   return (
     <Pressable
       {...props}
       style={style}
-      onPressIn={(e) => {
-        sound.button.replayAsync()
-        api.start({ from: { y: 0 }, to: { y: 8 } })
-
-        if (props.onPressIn) {
-          props.onPressIn(e)
-        }
-      }}
-      onPressOut={() => api.start({ reverse: true })}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
     >
       <View style={styles.shadow} />
       <animated.View
