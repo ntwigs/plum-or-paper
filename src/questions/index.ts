@@ -325,7 +325,7 @@ export const questions = [
   },
   {
     language: 'maori',
-    plum: { spelling: 'papera', phonetic: 'pa-peh-ra' },
+    plum: { spelling: 'paramu', phonetic: 'pah-ruh-moo' },
     paper: { spelling: 'pepa', phonetic: 'peh-pa' },
   },
   {
