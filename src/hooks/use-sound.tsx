@@ -12,22 +12,28 @@ type ContextValue = {
   sound: Record<Sounds, Sound>
 }
 
-type Sounds = 'button' | 'score' | 'bgm'
+type Sounds = 'button' | 'score' | 'bgm' | 'gameover'
 const useSounds = () => {
   const [sounds, setSounds] = useState<Record<Sounds, Sound>>()
 
   useEffect(() => {
     const loadSounds = async () => {
-      const [button, score, bgm] = await Promise.all([
+      const [button, score, bgm, gameover] = await Promise.all([
         Audio.Sound.createAsync(require('../assets/sound/button.wav')),
         Audio.Sound.createAsync(require('../assets/sound/score.wav')),
         Audio.Sound.createAsync(require('../assets/sound/bgm.mp3'), {
           isLooping: true,
           volume: 0.3,
         }),
+        Audio.Sound.createAsync(require('../assets/sound/game-over.wav')),
       ])
 
-      setSounds({ button: button.sound, score: score.sound, bgm: bgm.sound })
+      setSounds({
+        button: button.sound,
+        score: score.sound,
+        bgm: bgm.sound,
+        gameover: gameover.sound,
+      })
     }
 
     loadSounds()
