@@ -24,5 +24,6 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'react/jsx-uses-react': 0,
     '@typescript-eslint/no-var-requires': 0,
+    'react/display-name': 0,
   },
 }
