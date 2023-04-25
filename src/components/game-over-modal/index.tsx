@@ -3,31 +3,18 @@ import { Modal } from '../modal'
 import { Text } from '../text'
 import { Button } from '../button'
 import { Highscore } from '../highscore'
+import { AnimatedHeader } from '../animated-header'
+import { theme } from '../../theme'
 
 type Props = {
   isVisible: boolean
-  word: string
-  answer: string
   score: number
   restart: () => void
 }
-export const GameOverModal = ({
-  isVisible,
-  word,
-  answer,
-  score,
-  restart,
-}: Props) => {
+export const GameOverModal = ({ isVisible, score, restart }: Props) => {
   return (
     <Modal isVisible={isVisible}>
-      <Text color="dark" size="large">
-        GAME OVER
-      </Text>
-      <View style={styles.explanationContainer}>
-        <Text color="darker">{word}</Text>
-        <Text color="dark">MEANS</Text>
-        <Text color="darker">{answer}</Text>
-      </View>
+      <AnimatedHeader type="gameover" />
       <View style={styles.scoreContainer}>
         <View>
           <Text color="darker">Score</Text>
@@ -35,7 +22,7 @@ export const GameOverModal = ({
         </View>
         <View>
           <Text color="darker">Best</Text>
-          <Highscore score={score} align='right' />
+          <Highscore score={score} align="right" />
         </View>
       </View>
       <Button style={styles.restartButton} onPress={restart}>
@@ -46,18 +33,17 @@ export const GameOverModal = ({
 }
 
 const styles = StyleSheet.create({
-  explanationContainer: {
-    paddingTop: 24,
-    paddingBottom: 40,
-  },
   scoreContainer: {
     justifyContent: 'space-between',
     flexDirection: 'row',
-    paddingBottom: 40,
+    paddingBottom: theme.getSize(3),
   },
   restartButton: {
     position: 'absolute',
-    bottom: -32,
+    bottom: -theme.getSize(4),
     alignSelf: 'center',
+  },
+  image: {
+    width: '100%',
   },
 })
