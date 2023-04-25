@@ -5,6 +5,7 @@ import { Button } from '../button'
 import { Highscore } from '../highscore'
 import { AnimatedHeader } from '../animated-header'
 import { theme } from '../../theme'
+import { CurrentScore } from '../current-score'
 
 type Props = {
   isVisible: boolean
@@ -18,7 +19,7 @@ export const GameOverModal = ({ isVisible, score, restart }: Props) => {
       <View style={styles.scoreContainer}>
         <View>
           <Text color="darker">Score</Text>
-          <Text align="left">{score}</Text>
+          <CurrentScore score={score} isVisible={isVisible} />
         </View>
         <View>
           <Text color="darker">Best</Text>
