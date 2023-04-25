@@ -1,19 +1,19 @@
-import { StyleSheet, type ViewProps } from 'react-native'
-import {animated, type AnimatedStyle } from '@react-spring/native'
+import { StyleSheet, type ViewProps, View } from 'react-native'
 import { theme } from '../../theme'
 
-type Props = Omit<ViewProps, 'style'> & {
-  style?: AnimatedStyle<ViewProps> & ViewProps['style']
-}
-export const Background = ({ children, style, ...props }: Props) => {
-  return <animated.View style={[styles.container, style]} {...props}>{children}</animated.View>
+export const Background = ({ children, ...props }: ViewProps) => {
+  return (
+    <View style={styles.container} {...props}>
+      {children}
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: theme.color.light,
-    alignItems: 'center' ,
+    alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 16,
   },
