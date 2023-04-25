@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { theme } from '../../theme'
 import type { ReactNode } from 'react'
 import { animated, useTransition } from '@react-spring/native'
@@ -10,18 +10,23 @@ type Props = {
 
 export const Modal = ({ isVisible, children }: Props) => {
   const transitions = useTransition(isVisible, {
+    initial: {
+      backgroundColor: `${theme.color.light}FF`,
+      scale: 1,
+      opacity: 1
+    },
     from: {
-      backgroundColor: `rgba(0, 0, 0, 0)`,
+      backgroundColor: `${theme.color.light}00`,
       scale: 0.5,
-      opacity: 0,
+      opacity: 0
     },
     enter: {
-      backgroundColor: `rgba(0, 0, 0, 0.5)`,
+      backgroundColor: `${theme.color.light}BF`,
       scale: 1,
-      opacity: 1,
+      opacity: 1
     },
     leave: {
-      backgroundColor: `rgba(0, 0, 0, 0)`,
+      backgroundColor: `${theme.color.light}00`,
       scale: 0.5,
       opacity: 0,
     },
@@ -67,6 +72,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderWidth: 3,
     borderColor: theme.color.darker,
-    padding: 24,
+    padding: theme.getSize(3),
   },
 })
