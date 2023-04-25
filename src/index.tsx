@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar'
 import { Game } from './pages/game'
 import { View, StyleSheet } from 'react-native'
 import { usePreload } from './hooks/use-preload'
@@ -10,7 +9,7 @@ import { Background } from './components/background'
 export const Main = () => {
   const isDone = usePreload()
 
-  const onLayoutRootView = useCallback(async () => {
+  const onLayout = useCallback(async () => {
     if (isDone) {
       await SplashScreen.hideAsync()
     }
@@ -21,7 +20,7 @@ export const Main = () => {
   }
 
   return (
-    <View style={styles.container} onLayout={onLayoutRootView}>
+    <View style={styles.container} onLayout={onLayout}>
       <Game />
     </View>
   )
