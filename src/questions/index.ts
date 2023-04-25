@@ -150,7 +150,7 @@ export const questions = [
   },
   {
     language: 'georgian',
-    plum: { spelling: 'ჩაჭრა', phonetic: "ch'ach'raa" },
+    plum: { spelling: 'ჩაჭრა', phonetic: 'ch\'ach\'raa' },
     paper: { spelling: 'ქაღალდი', phonetic: 'ka-ghal-di' },
   },
   {
@@ -520,7 +520,7 @@ export const questions = [
   },
   {
     language: 'uzbek',
-    plum: { spelling: 'o‘rik', phonetic: "o'-rik" },
+    plum: { spelling: 'o‘rik', phonetic: 'o\'-rik' },
     paper: { spelling: 'qog‘oz', phonetic: 'qo-‘goz' },
   },
   {
