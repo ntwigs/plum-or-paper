@@ -1,5 +1,8 @@
-import { View, StyleSheet, Image } from 'react-native'
+import { View, StyleSheet, Image, Dimensions } from 'react-native'
 import { Text } from '../text'
+import { theme } from '../../theme'
+
+const width = Dimensions.get('screen').width
 
 const NOTE_IMAGE = require('../../assets/icons/note.png')
 type Props = {
@@ -21,10 +24,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
+    maxWidth: width - theme.getSize(8),
   },
   note: {
-    width: 32,
-    height: 32,
+    width: theme.getSize(4),
+    height: theme.getSize(4),
   },
   reverse: {
     transform: [{ scaleX: -1 }],
