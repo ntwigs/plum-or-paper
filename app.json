@@ -16,6 +16,7 @@
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 2,
       "blockedPermissions": [
         "android.permission.RECORD_AUDIO"
       ],
