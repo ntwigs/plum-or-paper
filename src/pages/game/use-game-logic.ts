@@ -23,7 +23,6 @@ export const useGameLogic = ({ nextQuestion }: UseGameLogic) => {
   } = useModal()
 
   const startGame = useCallback(() => {
-    sound.score.replayAsync()
     closeStartModal()
     timerRef.current[0].start()
   }, [])
