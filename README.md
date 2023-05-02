@@ -1,3 +1,5 @@
+![banner](https://user-images.githubusercontent.com/14088342/235726631-08be98a2-8f94-4df0-9182-8b7565111179.png)
+
 # 🎉 Plum or Paper: Ultimate Quiz 🎉
 
 Welcome to the "Plum or Paper: Ultimate Quiz" game repository! This is an outrageously fun, fast-paced Android game that tests your language skills by having you guess whether a word means 'plum' or 'paper'. With over 💯 languages to master and a ticking clock, this delightful mix of language trivia and thrilling gameplay will keep you hooked for hours. 🕑
