@@ -2,7 +2,7 @@
 
 <p align="center">
   <p align="center">
-		<strong>The perfect quiz game for unnecessary knowledge!</strong>. 🌟</br>
+		<strong>The perfect quiz game for unnecessary knowledge!</strong> 🌟</br>
 		Get it at your local <a href="https://play.google.com/store/apps/details?id=com.ntwigs.plumorpaperultimatequiz">Google Play Store</a>.
 	</p>
 </div>
