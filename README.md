@@ -37,6 +37,9 @@ Welcome to the "Plum or Paper: Ultimate Quiz" game repository! This is an outrag
 - 🏆 Game over screen with current and high scores
 - 📱 Uses React Native for cross-platform compatibility (Android version tested)
 
+|--|--|--|
+|![languages](https://github.com/ntwigs/plum-or-paper/assets/14088342/1561df43-4415-4629-9125-1ae90383146f)|![celebrate](https://github.com/ntwigs/plum-or-paper/assets/14088342/f2d54fcc-0c6b-4661-b0b7-09f1dab420cb)|![timed](https://github.com/ntwigs/plum-or-paper/assets/14088342/0cb7f673-bb92-4c4c-b58c-c96a5bc752ff)|
+
 ## 🚀 Getting Started
 
 These instructions will guide you through the process of setting up the development environment and running the game on your local machine. Let's get the party started! 🎈
