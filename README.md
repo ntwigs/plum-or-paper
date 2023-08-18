@@ -1,10 +1,19 @@
 ![banner](https://user-images.githubusercontent.com/14088342/235726631-08be98a2-8f94-4df0-9182-8b7565111179.png)
 
+<p align="center">
+  <p align="center">
+		<strong>The perfect quiz game for unnecessary knowledge!</strong>. 🌟</br>
+		Get it at your local <a href="https://play.google.com/store/apps/details?id=com.ntwigs.plumorpaperultimatequiz">Google Play Store</a>.
+	</p>
+</div>
+
+<hr><br>
+
 # 🎉 Plum or Paper: Ultimate Quiz 🎉
 
 Welcome to the "Plum or Paper: Ultimate Quiz" game repository! This is an outrageously fun, fast-paced Android game that tests your language skills by having you guess whether a word means 'plum' or 'paper'. With over 💯 languages to master and a ticking clock, this delightful mix of language trivia and thrilling gameplay will keep you hooked for hours. 🕑
 
-⚠️ Note: Although the game is built using React Native for cross-platform compatibility, only the Android version has been thoroughly tested.
+⚠️ Note: Although the game is built using React Native for cross-platform compatibility, only the Android version has been thoroughly tested and published.
 
 ## 📚 Table of Contents
 
