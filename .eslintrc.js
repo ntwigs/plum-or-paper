@@ -26,4 +26,9 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 0,
     'react/display-name': 0,
   },
+  settings: {
+    react: {
+      version: "detect"
+    } 
+  }
 }
