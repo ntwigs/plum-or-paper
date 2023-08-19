@@ -2,14 +2,14 @@ import {
   Pressable,
   type PressableProps,
   StyleSheet,
-  ViewStyle,
-  StyleProp,
+  type ViewStyle,
+  type StyleProp,
   View,
-  Text,
+  type GestureResponderEvent,
 } from 'react-native'
-import { ReactNode, useCallback } from 'react'
+import { type ReactNode, useCallback } from 'react'
 import { theme } from '../../theme'
-import { useSpring, animated, to } from '@react-spring/native'
+import { useSpring, animated } from '@react-spring/native'
 import { useSound } from '../../hooks/use-sound'
 
 type Props = Omit<PressableProps, 'children'> & {
@@ -22,7 +22,7 @@ export const Button = ({ children, style = {}, ...props }: Props) => {
     from: { y: 0 },
   }))
 
-  const onPressIn = useCallback((e) => {
+  const onPressIn = useCallback((e: GestureResponderEvent) => {
     sound.button.replayAsync()
     api.start({ from: { y: 0 }, to: { y: 8 } })
 

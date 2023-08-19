@@ -1,11 +1,12 @@
 import { useCallback, useMemo, useState } from 'react'
 import { questions } from '../../questions'
+import { type Answer } from '../../types/answer'
 
 const getQuestion = () => {
   return questions[Math.floor(Math.random() * questions.length)]
 }
 
-const getAnswer = () => {
+const getAnswer = (): Answer => {
   return Math.floor(Math.random() * 2) > 0 ? 'plum' : 'paper'
 }
 

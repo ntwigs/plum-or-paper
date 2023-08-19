@@ -1,6 +1,13 @@
 import { useMemo } from 'react'
+import { type Answer } from '../../types/answer'
 
-export const useAnswer = ({ answer, onCorrect, onWrong }) => {
+type UseAnswer = {
+  answer: Answer
+  onCorrect: () => void
+  onWrong: () => void
+}
+
+export const useAnswer = ({ answer, onCorrect, onWrong }: UseAnswer) => {
   const selectAnswer = (choice: typeof answer) => () => {
     answer === choice ? onCorrect() : onWrong()
   }

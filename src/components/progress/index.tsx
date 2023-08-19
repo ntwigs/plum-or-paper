@@ -1,6 +1,6 @@
 import { View, StyleSheet, Dimensions } from 'react-native'
 import { theme } from '../../theme'
-import { forwardRef, useEffect } from 'react'
+import { forwardRef } from 'react'
 import { useSpring, animated } from '@react-spring/native'
 
 const width = Dimensions.get('window').width

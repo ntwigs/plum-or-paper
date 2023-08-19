@@ -3,14 +3,12 @@ import { theme } from '../../theme'
 
 type Props = TextProps & {
   color?: keyof typeof theme.color
-  isUppercase?: boolean
   size?: 'large' | 'medium' | 'larger'
   align?: 'left' | 'right' | 'center'
 }
 export const Text = ({
   children,
   color = 'dark',
-  isUppercase = false,
   style,
   size = 'medium',
   align = 'center',
