@@ -25,6 +25,7 @@ Welcome to the "Plum or Paper: Ultimate Quiz" game repository! This is an outrag
     - [🔧 Installation](#-installation)
   - [🎮 Running the Game](#-running-the-game)
     - [📄 Additional Scripts](#-additional-scripts)
+    - [🥳 Credit](#-credit)
   - [📥 Download the App](#-download-the-app)
   - [🤝 Contributing](#-contributing)
   - [📄 License](#-license)
@@ -46,8 +47,7 @@ These instructions will guide you through the process of setting up the developm
 ### 📋 Prerequisites
 
 - Node.js v14.x.x or higher
-- Yarn v1.x.x or higher
-- Expo CLI v5.x.x or higher
+- Yarn v1.x.x
 
 ### 🔧 Installation
 
@@ -66,7 +66,7 @@ cd plum-or-paper
 3. 🧪 Install the required dependencies:
 
 ```
-yarn install
+yarn
 ```
 
 ## 🎮 Running the Game
@@ -74,12 +74,12 @@ yarn install
 To start the development server, use the following command:
 
 ```
-yarn
+yarn start
 ```
 
 This will open the Expo developer tools in your browser. From there, you can either:
 
-- Run the game on an Android emulator by clicking "Run on Android device/emulator" 🤖
+- Run the game on an Android emulator by selecting "Open android | Open iOS" 🤖
 - Run the game on your physical device by scanning the QR code using the Expo Go app 📲
 
 ### 📄 Additional Scripts
@@ -87,8 +87,20 @@ This will open the Expo developer tools in your browser. From there, you can eit
 You can also run the following scripts:
 
 - `yarn android`: Start the development server and open the game on an Android emulator 📱
-- `yarn ios`: Start the development server and open the game on an iOS simulator 🍏 (not thoroughly tested)
-- `yarn web`: Start the development server and open the game in a web browser 💻 (not thoroughly tested)
+- `yarn ios`: Start the development server and open the game on an iOS simulator 🍏 (Not tested)
+
+
+### 🥳 Credit
+
+Credit where credit is due! You can find the different sounds in the sound folder that is located [here](https://github.com/ntwigs/plum-or-paper/tree/main/src/assets/sound).
+
+Background music - `bgm.mp3`: [FantasticBgm](https://soundcloud.com/fantasticbgm)
+
+The other sounds are from [Freesound](https://freesound.org/). I don't remember who created them, so if any of you sound makers find this, let me know and I'll give proper credit. 🙏
+
+Button - `button.wav`: [unknown](https://freesound.org/)  
+Game over - `game-over.wav`: [unknown](https://freesound.org/)  
+Score - `score.wav`: [unknown](https://freesound.org/)  
 
 ## 📥 Download the App
 
