@@ -5,6 +5,10 @@
 		<strong>The perfect quiz game for unnecessary knowledge!</strong> 🌟</br>
 		Get it at your local <a href="https://play.google.com/store/apps/details?id=com.ntwigs.plumorpaperultimatequiz">Google Play Store</a>.
 	</p>
+  <p align="center">Plum or Paper is also at <strong>Product Hunt</strong>!🍑</p>
+  <p align="center">
+  <a href="https://www.producthunt.com/posts/plum-or-paper-ultimate-quiz?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-plum&#0045;or&#0045;paper&#0045;ultimate&#0045;quiz" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=410529&theme=neutral" alt="Plum&#0032;or&#0032;Paper&#0058;&#0032;Ultimate&#0032;Quiz - The&#0032;perfect&#0032;quiz&#0032;for&#0032;unnecessary&#0032;knowledge&#0033;&#0032;🌟 | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+  </p>
 </div>
 
 <hr><br>
