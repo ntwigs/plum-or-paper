@@ -12,7 +12,7 @@ export const Score = ({ children }: Props) => {
   }))
 
   useEffect(() => {
-    api.start({reset: true})
+    api.start({ reset: true })
   }, [children])
 
   return (

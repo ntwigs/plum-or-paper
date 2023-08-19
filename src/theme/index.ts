@@ -4,5 +4,5 @@ export const theme = {
     dark: '#CE4257',
     darker: '#4F000B',
   },
-  getSize: (size: number) => 8 * size
+  getSize: (size: number) => 8 * size,
 } as const

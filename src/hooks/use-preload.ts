@@ -11,7 +11,7 @@ const useLoadFont = () => {
 
 const useLoadSound = () => {
   const isLoaded = useSound()
-  return Boolean(isLoaded)  
+  return Boolean(isLoaded)
 }
 
 export const usePreload = () => {

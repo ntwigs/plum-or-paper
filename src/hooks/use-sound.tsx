@@ -2,7 +2,7 @@ import { Audio } from 'expo-av'
 import { Sound } from 'expo-av/build/Audio'
 import {
   createContext,
-  ReactNode,
+  type ReactNode,
   useContext,
   useEffect,
   useState,

@@ -32,6 +32,6 @@ export const useQuestion = () => {
     phonetic,
     spelling,
     language: question.language,
-    answer
+    answer,
   }
 }

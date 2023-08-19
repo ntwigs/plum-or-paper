@@ -18,7 +18,6 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'react-native'],
   rules: {
     indent: ['error', 2],
-    'linebreak-style': ['error', 'windows'],
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
     'react/react-in-jsx-scope': 0,
@@ -28,7 +27,7 @@ module.exports = {
   },
   settings: {
     react: {
-      version: "detect"
-    } 
-  }
+      version: 'detect',
+    },
+  },
 }

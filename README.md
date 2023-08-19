@@ -89,7 +89,6 @@ You can also run the following scripts:
 - `yarn android`: Start the development server and open the game on an Android emulator 📱
 - `yarn ios`: Start the development server and open the game on an iOS simulator 🍏 (Not tested)
 
-
 ### 🥳 Credit
 
 Credit where credit is due! You can find the different sounds in the sound folder that is located [here](https://github.com/ntwigs/plum-or-paper/tree/main/src/assets/sound).
@@ -100,7 +99,7 @@ The other sounds are from [Freesound](https://freesound.org/). I don't remember 
 
 Button - `button.wav`: [unknown](https://freesound.org/)  
 Game over - `game-over.wav`: [unknown](https://freesound.org/)  
-Score - `score.wav`: [unknown](https://freesound.org/)  
+Score - `score.wav`: [unknown](https://freesound.org/)
 
 ## 📥 Download the App
 

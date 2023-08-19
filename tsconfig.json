@@ -1,4 +1,7 @@
 {
-  "compilerOptions": {},
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "verbatimModuleSyntax": true
+  },
   "extends": "expo/tsconfig.base"
 }

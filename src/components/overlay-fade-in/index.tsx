@@ -10,7 +10,9 @@ export const OverlayFadeIn = () => {
     to: { opacity: 0 },
   })
 
-  return <animated.View pointerEvents="none" style={[styles.container, spring]} />
+  return (
+    <animated.View pointerEvents="none" style={[styles.container, spring]} />
+  )
 }
 
 const styles = StyleSheet.create({

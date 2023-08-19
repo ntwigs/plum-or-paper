@@ -13,17 +13,17 @@ export const Modal = ({ isVisible, children }: Props) => {
     initial: {
       backgroundColor: `${theme.color.light}FF`,
       scale: 1,
-      opacity: 1
+      opacity: 1,
     },
     from: {
       backgroundColor: `${theme.color.light}00`,
       scale: 0.5,
-      opacity: 0
+      opacity: 0,
     },
     enter: {
       backgroundColor: `${theme.color.light}BF`,
       scale: 1,
-      opacity: 1
+      opacity: 1,
     },
     leave: {
       backgroundColor: `${theme.color.light}00`,
